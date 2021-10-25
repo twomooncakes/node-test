@@ -13,4 +13,5 @@ export async function postData(endpoint, options) {
     const res = await fetch(URL + `${endpoint}/`, options);
     const data = await res.json();
     console.log(data);
+    return data;
 }

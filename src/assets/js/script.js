@@ -5,6 +5,7 @@ const form = document.getElementById("acc-form");
 const groupsArea = document.getElementById("groups");
 
 const token = localStorage.getItem('userToken');
+console.log(token);
 
 // GET /accounts/
 window.onload = async() => {

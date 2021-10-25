@@ -1,11 +1,9 @@
 import { postData } from './frontHelpers.js';
-console.log("script.js")
 console.log("login.js")
 
-const URL = 'http://localhost:3000/auth/login';
 const form = document.getElementById("log-form");
 
-form.onsubmit = async (event) => {
+form.onsubmit = async(event) => {
     event.preventDefault();
     console.log('sending');
     const formData = new FormData(form);
@@ -19,7 +17,7 @@ form.onsubmit = async (event) => {
         body: JSON.stringify(Object.fromEntries(formData)),
     }
     // POST /auth/login/
-    let logData = postData("auth/login", postOptions);
+    let logData = await postData("auth/login", postOptions);
     if(logData.msg === "Successfully logged in!") {
         localStorage.setItem("userToken", logData.token);
     }
