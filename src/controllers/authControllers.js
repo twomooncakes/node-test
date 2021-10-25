@@ -1,5 +1,6 @@
 const { registerUser, checkUser } = require('../models/authModels');
-const { hashValue } = require('../utils/hashHelper');
+const { hashValue, verifyHash } = require('../utils/hashHelper');
+const jwt = require('jsonwebtoken');
 
 const register = async (req, res) => {
     const newUser = {
@@ -17,7 +18,15 @@ const login = async (req, res) => {
     if(result.length === 0) {
         return res.status(400).send({ error: 'Incorrect email or password'});
     }
-    res.send({msg: 'ok', result})
+    if(verifyHash(userData, result)) {
+        const token = jwt.sign(
+            {id: result[0].id, email: result[0].email}, 
+            process.env.ACCESS_TOKEN_SECRET,
+            { expiresIn: '1h' },
+        );    
+        return res.send({msg: 'Successfully logged in!', token, email: result[0].email});
+    }
+    return res.status(400).send({ error: 'Incorrect email or password'})
 };
 
 module.exports = {
