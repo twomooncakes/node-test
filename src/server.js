@@ -16,8 +16,8 @@ app.get('/', (req, res) => {
   res.send('Hello express');
 });
 
-const userRoutes = require('./routes/userRoutes');
-app.use('/user', userRoutes);
+const authRoutes = require('./routes/authRoutes');
+app.use('/auth', authRoutes);
 
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

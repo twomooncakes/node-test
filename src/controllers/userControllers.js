@@ -1,4 +1,4 @@
-const { registerUser } = require('../models/userModels');
+const { registerUser, checkUser } = require('../models/userModels');
 const { hashValue } = require('../utils/hashHelper');
 
 const register = async (req, res) => {
@@ -7,12 +7,14 @@ const register = async (req, res) => {
         email: req.body.email,
         password: hashValue(req.body.password)
     }
-    let result = await registerUser(newUser);
+    const result = await registerUser(newUser);
     res.send({msg: 'registration successful', result})
 };
 
-const login = (req, res) => {
-    res.send({msg: 'ok'})
+const login = async (req, res) => {
+    const userData = req.body;
+    const result = await checkUser(userData.email);
+    res.send({msg: 'ok', result})
 };
 
 module.exports = {

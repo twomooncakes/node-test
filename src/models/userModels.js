@@ -1,12 +1,5 @@
 const { dbAction } = require('../utils/dbHelper');
 
-const getDBdata = async () => {
-    const sql = `
-        SELECT * FROM users
-    `;
-    return await dbAction(sql);
-};
-
 const registerUser = async (dbData) => {
     const sql = `
         INSERT INTO users (full_name, email, password)
@@ -16,7 +9,15 @@ const registerUser = async (dbData) => {
     return await dbAction(sql, Object.values(dbData));
 };
 
+const checkUser = async (email) => {
+    const sql = `
+        SELECT * FROM users
+        WHERE email = (?)
+    `;
+    return await dbAction(sql, [email]);
+};
+
 
 module.exports = {
-    getDBdata, registerUser
+    registerUser, checkUser
 };

@@ -1,6 +1,6 @@
 console.log("register.js")
 
-const URL = 'http://localhost:3000/user/register';
+const URL = 'http://localhost:3000/auth/register';
 const form = document.getElementById("reg-form");
 
 form.onsubmit = async (event) => {
