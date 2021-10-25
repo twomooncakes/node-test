@@ -7,7 +7,16 @@ const getDBdata = async () => {
     return await dbAction(sql);
 };
 
+const registerUser = async (dbData) => {
+    const sql = `
+        INSERT INTO users (full_name, email, password)
+        VALUES (?, ?, ?)
+    `;
+    console.log(dbData);
+    return await dbAction(sql, Object.values(dbData));
+};
+
 
 module.exports = {
-    getDBdata,
+    getDBdata, registerUser
 };

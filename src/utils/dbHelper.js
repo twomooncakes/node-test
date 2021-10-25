@@ -4,7 +4,6 @@ const { dbConfig } = require('../dbConfig');
 
 async function dbAction(sql, dbData = []) {
     try {
-        console.log(dbConfig);
         const conn = await mysql.createConnection(dbConfig);
         const [dbResult] = await conn.execute(sql, dbData);
         await conn.end();
