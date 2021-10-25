@@ -12,7 +12,7 @@ const registerUser = async (dbData) => {
         INSERT INTO users (full_name, email, password)
         VALUES (?, ?, ?)
     `;
-    console.log(dbData);
+    console.log(Object.values(dbData));
     return await dbAction(sql, Object.values(dbData));
 };
 
