@@ -1,3 +1,4 @@
+import { postData } from './frontHelpers.js';
 console.log("register.js")
 
 const URL = 'http://localhost:3000/auth/register';
@@ -9,13 +10,13 @@ form.onsubmit = async (event) => {
     const formData = new FormData(form);
     console.log('formData', Object.fromEntries(formData));
 
-    const res = await fetch(`${URL}`, {
+    let postOptions = {
         method: 'POST',
         headers: {
-        'Content-type': 'application/json',
+            'Content-type': 'application/json',
         },
         body: JSON.stringify(Object.fromEntries(formData)),
-    });
-    const data = await res.json();
-    console.log('data', data);
+    }
+    // POST /auth/login/
+    let regData = postData("auth/register", postOptions);
 };
