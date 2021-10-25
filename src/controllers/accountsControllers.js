@@ -7,9 +7,7 @@ const getData = async (req, res) => {
 
 const createAccount = async (req, res) => {
     let dbData = {
-        // group_id: parseInt(req.body.group_id),
-        // temporary hardcoded value for testing
-        group_id: 1,
+        group_id: parseInt(req.body.group_id),
         user_id: req.id,
     }
     let accounts = await newAccount(dbData);
