@@ -18,4 +18,7 @@ form.onsubmit = async (event) => {
     });
     const data = await res.json();
     console.log('data', data);
+    if(data.msg === "Successfully logged in!") {
+        localStorage.setItem("userToken", data.token);
+    }
 };

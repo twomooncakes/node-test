@@ -19,5 +19,8 @@ app.get('/', (req, res) => {
 const authRoutes = require('./routes/authRoutes');
 app.use('/auth', authRoutes);
 
+const accountsRoutes = require('./routes/accountsRoutes');
+app.use('/accounts', accountsRoutes);
+
 
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));

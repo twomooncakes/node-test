@@ -17,3 +17,13 @@ Content-Type: application/json
     "email": "row@mail.com",
     "password": "123456"
 }
+
+####
+
+GET  http://localhost:3000/accounts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoiamFuaW5lQG1haWwuY29tIiwiaWF0IjoxNjM1MTc3MzYzLCJleHAiOjE2MzUxODA5NjN9.cU4TI-2Hm2lSUJowBRFjnWJEZMBtgT4MICIHXmhJA7Y
+
+####
+
+POST  http://localhost:3000/accounts/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTEsImVtYWlsIjoiamFuaW5lQG1haWwuY29tIiwiaWF0IjoxNjM1MTc3MzYzLCJleHAiOjE2MzUxODA5NjN9.cU4TI-2Hm2lSUJowBRFjnWJEZMBtgT4MICIHXmhJA7Y
