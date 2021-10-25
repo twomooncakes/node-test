@@ -1,4 +1,4 @@
-const { registerUser, checkUser } = require('../models/userModels');
+const { registerUser, checkUser } = require('../models/authModels');
 const { hashValue } = require('../utils/hashHelper');
 
 const register = async (req, res) => {
@@ -14,6 +14,9 @@ const register = async (req, res) => {
 const login = async (req, res) => {
     const userData = req.body;
     const result = await checkUser(userData.email);
+    if(result.length === 0) {
+        return res.status(400).send({ error: 'Incorrect email or password'});
+    }
     res.send({msg: 'ok', result})
 };
 
