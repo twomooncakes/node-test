@@ -20,7 +20,7 @@ window.onload = async() => {
 
     // redirect if token expires
     if(availableGroupData.error === "bad token") window.location.href = (`login.html`);
-    
+
     const dropdown = document.getElementById("group-select");
     availableGroupData.groups.map(group => {
         dropdown.innerHTML += `
@@ -28,6 +28,14 @@ window.onload = async() => {
         `;
     })
 
+    // when all groups have been added, disable selection
+    if(availableGroupData.groups.length === 0) {
+        dropdown.disabled = true;
+        dropdown.innerHTML += `
+            <option>No more groups available</option>
+        `;
+    }
+    
     // GET /accounts/
     const accountData = await getData("accounts", options);
     groupsArea.innerHTML = "";
