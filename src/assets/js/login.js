@@ -21,11 +21,11 @@ form.onsubmit = async(event) => {
     if(logData.msg === "Successfully logged in!") {
         await localStorage.setItem("userToken", logData.token);
         window.location.href = (`groups.html`);
-    }
-    
-    document.getElementById("messageOutput").innerHTML = `
+    } else {
+        document.getElementById("messageOutput").innerHTML = `
         <div class="alert error">
             <p>${logData.error}</p>
         </div>
     `;
+    }
 };
