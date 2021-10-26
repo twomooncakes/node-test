@@ -16,6 +16,8 @@ window.onload = async() => {
     };
     const billData = await getData(`bills/${groupId}`, options);
     if(!billData.bills) {
+        // redirect if token expires
+        if(billData.error === "bad token") window.location.href = (`login.html`);
         billsArea.innerHTML = `
             <div class="alert warning">
                 <p>${billData.msg}</p>

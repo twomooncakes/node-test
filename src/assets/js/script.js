@@ -17,6 +17,10 @@ window.onload = async() => {
 
     // GET /accounts/available-groups for dropdown
     const availableGroupData = await getData("accounts/available-groups", options);
+
+    // redirect if token expires
+    if(availableGroupData.error === "bad token") window.location.href = (`login.html`);
+    
     const dropdown = document.getElementById("group-select");
     availableGroupData.groups.map(group => {
         dropdown.innerHTML += `
