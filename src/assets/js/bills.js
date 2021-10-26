@@ -1,6 +1,7 @@
 import { getData, postData } from './frontHelpers.js';
 console.log("bills.js")
 
+const billsArea = document.getElementById("bills");
 const form = document.getElementById("bill-form");
 const token = localStorage.getItem('userToken');
 console.log(token);
@@ -15,7 +16,7 @@ window.onload = async() => {
     };
     const billData = await getData(`bills/${groupId}`, options);
     if(!billData.bills) {
-        document.getElementById("bills").innerHTML = `
+        billsArea.innerHTML = `
             <div class="alert warning">
                 <p>${billData.msg}</p>
             </div>
@@ -51,5 +52,15 @@ form.onsubmit = async (event) => {
         body: JSON.stringify(body),
     }
     // POST /bills/
-    postData("bills", postOptions);
+    const createBillData = await postData("bills", postOptions);
+    
+    if(!createBillData.result) {
+        billsArea.innerHTML = `
+            <div class="alert error">
+                <p>${createBillData.msg}</p>
+            </div>
+        `;
+        return;
+    }
+    location.reload();
 };

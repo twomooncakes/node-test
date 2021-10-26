@@ -66,5 +66,15 @@ form.onsubmit = async (event) => {
         body: JSON.stringify(Object.fromEntries(formData)),
     }
     // POST /accounts/
-    postData("accounts", postOptions);
+    const createAccountData = await postData("accounts", postOptions);
+
+    if(!createAccountData.result) {
+        groupsArea.innerHTML = `
+            <div class="alert error">
+                <p>${createAccountData.msg}</p>
+            </div>
+        `;
+        return;
+    }
+    location.reload();
 };

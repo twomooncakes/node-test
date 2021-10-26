@@ -13,6 +13,9 @@ const createBill = async (req, res) => {
     let dbData = req.body;
     console.log(dbData);
     const result = await newBill(dbData);
+    if(!result) {
+        res.send({msg: 'Something went wrong.'});
+    }
     res.send({msg: 'success', result})
 };
 

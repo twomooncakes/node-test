@@ -13,8 +13,11 @@ const createAccount = async (req, res) => {
         group_id: parseInt(req.body.group_id),
         user_id: req.id
     }
-    let accounts = await newAccount(dbData);
-    res.send({msg: 'ok', accounts});
+    let result = await newAccount(dbData);
+    if(!result) {
+        res.send({msg: 'Something went wrong.'});
+    }
+    res.send({msg: 'ok', result});
 };
 
 
