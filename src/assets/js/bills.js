@@ -4,9 +4,7 @@ console.log("bills.js")
 const form = document.getElementById("bill-form");
 const token = localStorage.getItem('userToken');
 console.log(token);
-// const groupId = localStorage.getItem('currentGroupId');
-// hardcoded for testing
-const groupId = 1;
+const groupId = localStorage.getItem('currentGroupId');
 
 // GET /bills/:id
 window.onload = async() => {

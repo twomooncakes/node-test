@@ -14,16 +14,29 @@ window.onload = async() => {
             Authorization: `Bearer ${token}`,
         }
     };
+    // GET /accounts/
     const accountData = await getData("accounts", options);
     groupsArea.innerHTML = "";
-    accountData.accounts.map(group => {
+
+    // Display Group Cards
+    await accountData.accounts.map(group => {
         groupsArea.innerHTML += `
-            <div class="group-card">
+            <div class="group-card" id="${group.group_id}">
                 <h2>ID: ${group.group_id}</h2>
                 <h4>${group.name}</h4>
             </div>
         `;
     });
+
+    // Click Event for Group
+    const groupCards = document.querySelectorAll(".group-card");
+    for(let card of groupCards) {
+        card.onclick = (event) => {
+            console.log(event.target.id);
+            localStorage.setItem('currentGroupId', event.target.id);
+            window.location.href = (`bills.html`);
+        }
+    }
 }
 
 
