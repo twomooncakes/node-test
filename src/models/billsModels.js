@@ -10,7 +10,15 @@ const getBills = async (id) => {
     return await dbAction(sql, [id]);
 };
 
+const newBill = async (dbData) => {
+    const sql = `
+        INSERT INTO bills (amount, description, group_id)
+        VALUES (?, ?, ?)
+    `;
+    return await dbAction(sql, Object.values(dbData));
+};
+
 
 module.exports = {
-    getBills
+    getBills, newBill
 };
