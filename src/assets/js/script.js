@@ -31,6 +31,9 @@ window.onload = async() => {
     // when all groups have been added, disable selection
     if(availableGroupData.groups.length === 0) {
         dropdown.disabled = true;
+        let btn = document.getElementById("acc-btn");
+        btn.disabled = true;
+        btn.style.cursor = "not-allowed";
         dropdown.innerHTML += `
             <option>No more groups available</option>
         `;
@@ -65,7 +68,12 @@ window.onload = async() => {
     const groupCards = document.querySelectorAll(".group-card");
     for(let card of groupCards) {
         card.onclick = (event) => {
-            console.log(event.target.id);
+            console.log(event.target)
+            // if child element clicked, set proper id from parent card
+            if(event.target.id === "") {
+                event.target.id = event.target.parentElement.id;
+            }
+            if(event.target.id)
             localStorage.setItem('currentGroupId', event.target.id);
             window.location.href = (`bills.html`);
         }
