@@ -22,6 +22,12 @@ main {
     height: 100px;
 }
 
+/* General */
+
+section {
+    margin: 2rem 0;
+}
+
 /* Form */
 
 form {
@@ -29,4 +35,18 @@ form {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* Group Page */
+
+#groups {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+}
+
+.group-card {
+    border: 1px solid #282c34;
+    border-radius: 8px;
+    padding: 1rem 0.5em;
 }

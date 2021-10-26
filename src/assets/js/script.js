@@ -15,7 +15,15 @@ window.onload = async() => {
         }
     };
     const accountData = await getData("accounts", options);
-    groupsArea.innerHTML += "<h2>Your Groups</h2>";
+    groupsArea.innerHTML = "";
+    accountData.accounts.map(group => {
+        groupsArea.innerHTML += `
+            <div class="group-card">
+                <h2>ID: ${group.group_id}</h2>
+                <h4>${group.name}</h4>
+            </div>
+        `;
+    });
 }
 
 
