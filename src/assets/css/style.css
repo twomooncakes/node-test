@@ -22,10 +22,33 @@ main {
     height: 100px;
 }
 
+#logo h3 {
+    color: #6c757d;
+    margin-top: -0.5rem;
+}
+
 /* General */
 
 section {
     margin: 2rem 0;
+}
+
+a {
+    color:#282c34;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: 1px solid #282c34;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+}
+
+#messageOutput {
+    margin-bottom: 2rem;
 }
 
 /* Form */
@@ -33,8 +56,28 @@ section {
 form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+form > div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+label {
+    margin-bottom: 0.5rem;
+}
+
+input, select, option {
+    width: 350px;
+    padding: 0.5rem 0.3rem;
+}
+
+input, select {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px;
 }
 
 /* Group Page */
@@ -46,9 +89,16 @@ form {
 }
 
 .group-card {
-    border: 1px solid #282c34;
+    cursor: pointer;
+    border: 1px solid #d6d8db;
     border-radius: 8px;
     padding: 1rem 0.5em;
+}
+
+.group-card h4 {
+    font-weight: 600;
+    color: #6c757d;
+    margin-top: -0.5rem;
 }
 
 /* Bill Page */
@@ -60,5 +110,44 @@ form {
 }
 
 table {
+    background-color: white;
+    text-align: left;
+    margin: 2rem;
     border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 1.2rem 2rem;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #e2e3e5;
+}
+
+/* Alerts */
+
+.alert {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 2px;
+    border: 1px solid;
+    border-radius: .25rem;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.warning {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
 }

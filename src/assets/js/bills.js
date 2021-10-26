@@ -31,7 +31,7 @@ window.onload = async() => {
             <tr>
                 <td>${bill.id}</td>
                 <td>${bill.description}</td>
-                <td>${bill.amount}</td>
+                <td>${bill.amount}€</td>
             </tr>
         `;
     });
