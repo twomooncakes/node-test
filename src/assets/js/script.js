@@ -2,7 +2,7 @@ import { getData, postData } from './frontHelpers.js';
 console.log("script.js")
 
 const form = document.getElementById("acc-form");
-const groupsArea = document.getElementById("groups");
+const groupsArea = document.getElementById("output");
 
 const token = localStorage.getItem('userToken');
 console.log(token);
@@ -17,6 +17,17 @@ window.onload = async() => {
     // GET /accounts/
     const accountData = await getData("accounts", options);
     groupsArea.innerHTML = "";
+
+    if(!accountData.accounts) {
+        groupsArea.innerHTML = `
+            <div class="alert warning">
+                <p>${accountData.msg}</p>
+            </div>
+        `;
+        return;
+    } 
+    // if no errors, use grid styling
+    groupsArea.id = "groups";
 
     // Display Group Cards
     await accountData.accounts.map(group => {

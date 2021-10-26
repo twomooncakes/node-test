@@ -50,3 +50,15 @@ form {
     border-radius: 8px;
     padding: 1rem 0.5em;
 }
+
+/* Bill Page */
+
+#bills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+}

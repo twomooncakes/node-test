@@ -2,7 +2,8 @@ const { dbAction } = require('../utils/dbHelper');
 
 const getBills = async (id) => {
     const sql = `
-        SELECT * FROM bills
+        SELECT bills.id, bills.group_id, bills.amount, bills.description, groups.id AS gid, groups.name
+        FROM bills
         LEFT JOIN groups
         ON groups.id = bills.group_id
         WHERE bills.group_id = (?)

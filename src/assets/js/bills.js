@@ -13,7 +13,20 @@ window.onload = async() => {
             Authorization: `Bearer ${token}`
         }
     };
-    const accountData = await getData(`bills/${groupId}`, options);
+    const billData = await getData(`bills/${groupId}`, options);
+    if(billData) {
+
+    }
+    // Display Bills
+    await billData.bills.map(bill => {
+        document.querySelector("tbody").innerHTML += `
+            <tr>
+                <td>${bill.id}</td>
+                <td>${bill.description}</td>
+                <td>${bill.amount}</td>
+            </tr>
+        `;
+    });
 }
 
 form.onsubmit = async (event) => {
@@ -21,6 +34,8 @@ form.onsubmit = async (event) => {
     console.log('sending');
     const formData = new FormData(form);
     console.log('formData', Object.fromEntries(formData));
+    const body = Object.fromEntries(formData);
+    body.group_id = groupId;
 
     let postOptions = {
         method: 'POST',
@@ -28,7 +43,7 @@ form.onsubmit = async (event) => {
             'Content-type': 'application/json',
             'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify(Object.fromEntries(formData)),
+        body: JSON.stringify(body),
     }
     // POST /bills/
     postData("bills", postOptions);
