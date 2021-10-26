@@ -3,7 +3,7 @@ const { getAccount, newAccount } = require('../models/accountsModels');
 const getData = async (req, res) => {
     let accounts = await getAccount(req.id);
     if(accounts.length === 0) {
-        res.send({msg: 'You have no groups associated with your account. Add a group in the form below!'});
+        return res.send({msg: 'You have no groups associated with your account. Add a group in the form below!'});
     }
     res.send({msg: 'ok', accounts});
 };

@@ -14,8 +14,13 @@ window.onload = async() => {
         }
     };
     const billData = await getData(`bills/${groupId}`, options);
-    if(billData) {
-
+    if(!billData.bills) {
+        document.getElementById("bills").innerHTML = `
+            <div class="alert warning">
+                <p>${billData.msg}</p>
+            </div>
+        `;
+        return;
     }
     // Display Bills
     await billData.bills.map(bill => {
