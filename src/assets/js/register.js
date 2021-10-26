@@ -23,26 +23,32 @@ form.onsubmit = async (event) => {
         window.location.href = (`login.html`);
     }
     const output = document.getElementById("messageOutput");
+    output.classList.add("alert");
+    output.classList.add("error");
     output.innerHTML = "";
     regData.error.map(error => {
-        if(error.field === "password2") {
+        if (error.field === "full_name") {
+            console.log(1);
             output.innerHTML += `
-                <p>Password fields must match!</p>
-            `;
-        } else if (error.field === "password") {
-            output.innerHTML += `
-                <p>Password should be at least 6 characters long!</p>
-            `;
-        } else if (error.field === "full_name") {
-            output.innerHTML += `
-                <p>Full name shouldn't be empty!</p>
+                Full name shouldn't be empty!<br>
             `;
         } else if (error.field === "email") {
+            console.log(2);
             output.innerHTML += `
-                <p>Email shouldn't be empty!</p>
+                Email shouldn't be empty!<br>
             `;
-        }
-        
+        } else if (error.field === "password") {
+            console.log(3);
+            output.innerHTML += `
+                Password should be at least 6 characters long!<br>
+            `;
+        } else if (error.field === "password2") {
+            console.log(4);
+            output.innerHTML += `
+                Password fields must match!<br>
+            `;
+        } 
+        return;
     })
 
     
