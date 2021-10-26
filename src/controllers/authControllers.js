@@ -9,7 +9,7 @@ const register = async (req, res) => {
         password: hashValue(req.body.password)
     }
     const result = await registerUser(newUser);
-    res.send({msg: 'registration successful', result})
+    res.send({msg: 'Registration successful!', result})
 };
 
 const login = async (req, res) => {

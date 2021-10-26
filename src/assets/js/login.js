@@ -22,4 +22,10 @@ form.onsubmit = async(event) => {
         await localStorage.setItem("userToken", logData.token);
         window.location.href = (`groups.html`);
     }
+    
+    document.getElementById("messageOutput").innerHTML = `
+        <div class="alert error">
+            <p>${logData.error}</p>
+        </div>
+    `;
 };

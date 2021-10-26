@@ -18,5 +18,32 @@ form.onsubmit = async (event) => {
         body: JSON.stringify(Object.fromEntries(formData)),
     }
     // POST /auth/login/
-    let regData = postData("auth/register", postOptions);
+    let regData = await postData("auth/register", postOptions);
+    if(regData.msg === "Registration successful!") {
+        window.location.href = (`login.html`);
+    }
+    const output = document.getElementById("messageOutput");
+    output.innerHTML = "";
+    regData.error.map(error => {
+        if(error.field === "password2") {
+            output.innerHTML += `
+                <p>Password fields must match!</p>
+            `;
+        } else if (error.field === "password") {
+            output.innerHTML += `
+                <p>Password should be at least 6 characters long!</p>
+            `;
+        } else if (error.field === "full_name") {
+            output.innerHTML += `
+                <p>Full name shouldn't be empty!</p>
+            `;
+        } else if (error.field === "email") {
+            output.innerHTML += `
+                <p>Email shouldn't be empty!</p>
+            `;
+        }
+        
+    })
+
+    
 };
