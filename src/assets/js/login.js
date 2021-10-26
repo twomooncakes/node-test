@@ -19,6 +19,7 @@ form.onsubmit = async(event) => {
     // POST /auth/login/
     let logData = await postData("auth/login", postOptions);
     if(logData.msg === "Successfully logged in!") {
-        localStorage.setItem("userToken", logData.token);
+        await localStorage.setItem("userToken", logData.token);
+        window.location.href = (`groups.html`);
     }
 };

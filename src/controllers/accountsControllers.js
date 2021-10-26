@@ -1,4 +1,4 @@
-const { getAccount, newAccount } = require('../models/accountsModels');
+const { getAccount, getAvailableGroups, newAccount } = require('../models/accountsModels');
 
 const getData = async (req, res) => {
     let accounts = await getAccount(req.id);
@@ -6,6 +6,11 @@ const getData = async (req, res) => {
         return res.send({msg: 'You have no groups associated with your account. Add a group in the form below!'});
     }
     res.send({msg: 'ok', accounts});
+};
+
+const getDropdownValues = async (req, res) => {
+    let groups = await getAvailableGroups(req.id);
+    res.send({msg: 'ok', groups});
 };
 
 const createAccount = async (req, res) => {
@@ -23,5 +28,5 @@ const createAccount = async (req, res) => {
 
 
 module.exports = {
-    getData, createAccount
+    getData, getDropdownValues, createAccount
 };

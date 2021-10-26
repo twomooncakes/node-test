@@ -14,6 +14,16 @@ window.onload = async() => {
             Authorization: `Bearer ${token}`,
         }
     };
+
+    // GET /accounts/available-groups for dropdown
+    const availableGroupData = await getData("accounts/available-groups", options);
+    const dropdown = document.getElementById("group-select");
+    availableGroupData.groups.map(group => {
+        dropdown.innerHTML += `
+            <option value="${group.id}">${group.id} - ${group.name}</option>
+        `;
+    })
+
     // GET /accounts/
     const accountData = await getData("accounts", options);
     groupsArea.innerHTML = "";
